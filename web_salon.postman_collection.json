@@ -1,0 +1,1870 @@
+{
+	"info": {
+		"_postman_id": "eeb0f7ca-b88b-4942-b744-6d1c659a293a",
+		"name": "web_salon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth_",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72bcc983-3d41-44f0-9d49-319e3f035e73",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"key\", jsonData.key);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"sedi_master\",\n\t\"password\": \"asdfasdf1\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}auth/login/",
+							"host": [
+								"{{BASE_URL}}auth"
+							],
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}auth/logout/",
+							"host": [
+								"{{BASE_URL}}auth"
+							],
+							"path": [
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"sedi_partner\",\n\t\"password\": \"asdfasdf1\",\n\t\"user_type\": \"partner\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}auth/register/",
+							"host": [
+								"{{BASE_URL}}auth"
+							],
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Master",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"sedi_master\",\n\t\"password\": \"asdfasdf1\",\n\t\"user_type\": \"master\",\n\t\"salon_id\": \"4\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}auth/register/",
+							"host": [
+								"{{BASE_URL}}auth"
+							],
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Client Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\":{\n\t\t\"username\": \"client1\",\n\t\t\"password\": \"1\",\n\t\t\"telephone\": \"+77028241107\",\n\t\t\"first_name\": \"asdfASDF\",\n\t\t\"last_name\": \"asdf\",\n\t\t\"email\": \"email@gmail.com\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n\t\t\"username\": \"test_client_rating\",\n\t\t\"password\": \"asdfasdfasdf1\",\n\t\t\"user_type\": \"client\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/5/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order List Partner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/partners/2/orders/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"partners",
+								"2",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order List Salon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/orders/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order List Master",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/1/orders/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"1",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order List Client",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/1/orders/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								"1",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"master_service_id\": \"1\",\n\t\"date\": \"2018-11-14\",\n\t\"time\": \"12:00\",\n\t\"flag\": \"new_order\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/orders/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/orders/10/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"orders",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{BASE_URL}}main/orders/4/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"orders",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"date\": \"2018-11-26\",\n\t\"time\": \"12:00\",\n\t\"flag\": \"canceled_order\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/orders/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"orders",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Salon",
+			"item": [
+				{
+					"name": "Salon List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/?",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								""
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Hairs",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Salon List ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/partners/2/salons/?",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"partners",
+								"2",
+								"salons",
+								""
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Hairs",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Salon 3\",\n\t\"telephone\": \"+77028882234\",\n\t\"address\": \"no address\",\n\t\"card_number\": \"1234567890111113\",\n\t\"work_start\": \"9:00:00\",\n\t\"work_end\": \"18:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Salon 1 Updated\",\n    \"telephone\": \"+77028882234\",\n    \"address\": \"Тургут Озала, 77\",\n    \"is_aproved\": true,\n    \"card_number\": \"`132312152361231\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Partner",
+			"item": [
+				{
+					"name": "Partner List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/partners/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"partners",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n\t\t\"username\": \"test_salonadmin_my\",\n\t\t\"password\": \"asdfasdfasdf1\",\n\t\t\"user_type\": \"salon_admin\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salonadmins/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salonadmins",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/partners/2/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"partners",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salonadmins/2/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salonadmins",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\":{\n\t\t\"username\": \"partner1\",\n\t\t\"password\": \"asdfasdfasdf1\",\n\t\t\"telephone\": \"+77028241103\",\n\t\t\"first_name\": \"asdf\",\n\t\t\"last_name\": \"asdf\",\n\t\t\"email\": \"email2@gmail.com\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/partners/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"partners",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Service List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/services/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"services",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Service 1\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/services/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"services",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/services/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"services",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"service updated\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/services/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"services",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/services/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"services",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Master",
+			"item": [
+				{
+					"name": "Master List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/masters/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"masters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"username\": \"masterNewTime22\",\n        \"password\": \"asdfasdfasdf1\",\n        \"user_type\": \"master\",\n        \"telephone\": \"+77028241122\"\n    },\n    \"times\": {\n    \t\"date\": \"2018-11-14\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/masters/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"masters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/4/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n        \"username\": \"Qalqa\",\n        \"password\": \"asdfadsfadsf1\",\n        \"telephone\": \"+77772221131\",\n        \"first_name\": \"qalqa\",\n        \"last_name\": \"qalqa\",\n        \"email\": \"qalqaman22@gmail.com\"\n    },\n\t\"is_aproved\": true\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/4/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/4/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Master Service",
+			"item": [
+				{
+					"name": "MasterService List Not NEEd",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masterservices/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masterservices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MasterService Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"price\": \"3300\",\n\t\"master_id\": \"1\",\n\t\"service_id\": \"1\",\n\t\"name\": \"TESTE CREATE\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/1/masterservices/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"1",
+								"masterservices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MasterService Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masterservices/4/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masterservices",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MasterService Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"price\": \"55000\",\n\t\"name\": \"QWERTY\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masterservices/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masterservices",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MasterService Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masterservices/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masterservices",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"item": [
+				{
+					"name": "Service Master Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/services/1/masterservices/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"services",
+								"1",
+								"masterservices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Master Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/1/masterservices/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"1",
+								"masterservices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Flag",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flag\": \"canceled_order\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/update-flag/1/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"update-flag",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mater Time",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"t9\": true,\n            \"t10\": true,\n            \"t11\": true,\n            \"t12\": true,\n            \"t13\": true,\n            \"t14\": true,\n            \"t15\": true,\n            \"t16\": true,\n            \"t17\": true\n        \n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/update-master-time/11/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"update-master-time",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Shedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/master-shedule/1/?date=2018-11-29",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"master-shedule",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2018-11-29"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filter",
+			"item": [
+				{
+					"name": "Service Time",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"salon_name\":  \"Last Test\",\n\t\"service_name\": \"CutHair\"\n}\t"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/filter/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"filter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Service Time",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"service_name\": \"Hair Something\",\n\t\"time\": \"11:00:00\",\n\t\"date\": \"2018-11-12\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/filter/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"filter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Master Filter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"master_name\": \"lasttest\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/filter/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"filter",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salon-filter/?search=salon",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salon-filter",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "salon"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "List Comment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/comments/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Abylay kjdcnzdkjcfnjzhdschsdk\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/comments/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rate",
+			"item": [
+				{
+					"name": "Master",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rate\": \"5\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/masters/1/rate/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"masters",
+								"1",
+								"rate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rate\": \"4\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/clients/2/rate/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"clients",
+								"2",
+								"rate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Token {{key}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rate\": \"5\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}main/salons/2/rate/",
+							"host": [
+								"{{BASE_URL}}main"
+							],
+							"path": [
+								"salons",
+								"2",
+								"rate",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
