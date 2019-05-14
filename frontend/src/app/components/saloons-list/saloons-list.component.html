@@ -1,0 +1,14 @@
+<!-- <button (click)="test()">all saloons</button> -->
+<ng-container>
+  <div class="main row justify-content-center align-items-middle">
+    <div class="col-8">
+      <h4 class="text-center text-uppercase">all saloons</h4>
+      <p>
+        <a class="btn btn-info text-uppercase text-center w-100" routerLink='/partner-saloons'>view my saloons</a>
+      </p>
+      <div class="list-group">
+        <a routerLink='' *ngFor="let saloon of saloons" class="list-group-item list-group-item-action"> {{saloon.id}}. {{saloon.name}} </a>
+      </div>
+    </div>
+  </div>
+</ng-container>

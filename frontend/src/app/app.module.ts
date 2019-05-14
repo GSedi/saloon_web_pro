@@ -7,17 +7,31 @@ import { ProviderService } from './shared/services/provider.service';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './AuthInterceptor';
+import { PartnerSaloonsComponent } from './components/partner-saloons/partner-saloons.component';
+import { LoginComponent } from './components/login/login.component';
+import { SaloonComponent } from './components/saloon/saloon.component';
+import { SaloonsListComponent } from './components/saloons-list/saloons-list.component';
+import { ServiceDetailComponent } from './components/service-detail/service-detail.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PartnerSaloonsComponent,
+    LoginComponent,
+    SaloonsListComponent,
+    SaloonComponent,
+    ServiceDetailComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     ProviderService,
