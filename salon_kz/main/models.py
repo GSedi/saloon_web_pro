@@ -123,6 +123,8 @@ class Salon(models.Model):
     work_start = models.TimeField(auto_now_add=False, auto_now=False)
     work_end = models.TimeField(auto_now_add=False, auto_now=False)
     rating = models.FloatField(default=5)
+    img_url = models.CharField(max_length=250, default=None, null=True)
+    description = models.TextField(default=None, null=True)
 
     def calc_rating(self):
         cnt = self.salon_ratings.all().count()
@@ -142,6 +144,8 @@ class Salon(models.Model):
 
 class Service(models.Model):
     name = models.CharField(max_length=100)
+    img_url = models.CharField(max_length=250, default=None, null=True)
+    description = models.TextField(default=None, null=True)
     salon = models.ForeignKey(Salon, on_delete=models.CASCADE, related_name='salon_services')
 
     class Meta:
