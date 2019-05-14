@@ -210,7 +210,7 @@ class ServiceDetail(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method == 'GET':
             self.permission_classes = (IsAdminUser|IsClient|IsOwnerPartner, )
         else:
-            self.permission_classes = (IsAdminUser|IsOwnerPartner)
+            self.permission_classes = (IsAdminUser|IsOwnerPartner,)
         return super(self.__class__, self).get_permissions()
 
 
