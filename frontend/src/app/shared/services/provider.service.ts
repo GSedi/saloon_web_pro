@@ -7,6 +7,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProviderService extends MainService {
 
+  public sendMessage = new EventEmitter<string>();
+
   constructor(http: HttpClient) {
     super(http);
   }
@@ -15,6 +17,12 @@ export class ProviderService extends MainService {
     return this.post(`http://127.0.0.1:8000/api/auth/login/`, {
       username: username,
       password: password
+    })
+  }
+
+  filterName(name: string): Promise<any> {
+    return this.get(`http://127.0.0.1:8000/api/main/salon-filter/`, {
+      search: name
     })
   }
 

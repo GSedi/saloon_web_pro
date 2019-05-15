@@ -18,11 +18,13 @@ export class PartnerSaloonsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = localStorage.partner_id
+    if (localStorage.partner_id) {
+      this.id = localStorage.partner_id
 
-    this.provider.getMySaloons(this.id).then(res => {
-      this.saloons = res
-    })
+      this.provider.getMySaloons(this.id).then(res => {
+        this.saloons = res
+      })
+    }
   }
 
   test() {
@@ -38,7 +40,8 @@ export class PartnerSaloonsComponent implements OnInit {
   }
 
   isPartner() {
-    return !!this.id
+    if (localStorage.partner_id) return true
+    else return false
   }
 
   createSaloon() {

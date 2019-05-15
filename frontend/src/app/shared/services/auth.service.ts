@@ -15,19 +15,15 @@ export class AuthService extends MainService {
     return !!localStorage.getItem('token');
   }
 
-  register(username: any, password: any, type: string): void{
-    this.post('http://localhost:8000/api/auth/register/', {
+  register(username: any, password: any, type: string): Promise<any> {
+    return this.post('http://localhost:8000/api/auth/register/', {
       username: username,
       password: password,
       user_type: type
-    }).then(res => {
-      localStorage.setItem('key', res.token);
-    });
+    })
   }
 
-  logout(): void {
-    this.post('http://localhost:8000/api/auth/logout/', {}).then(() => {
-      localStorage.clear();
-    });
+  logout(): Promise<any> {
+    return this.post('http://localhost:8000/api/auth/logout/', {})
   }
 }

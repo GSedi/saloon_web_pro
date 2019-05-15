@@ -1,5 +1,5 @@
 <ng-container>
-  <div class="main row justify-content-center">
+  <div *ngIf="!isLogged()" class="main row justify-content-center">
     <div class="col-8">
       <h4 class="text-uppercase text-center">signup</h4>
       <div class="input-group mb-2">
@@ -14,7 +14,7 @@
         </div>
         <input [(ngModel)]="password" type="password" class="form-control">
       </div>
-      <select class="form-control mb-3 text-uppercase" [(ngModel)]="selectedTaskListId">
+      <select class="form-control mb-3 text-uppercase" [(ngModel)]="type">
         <option value="client">client</option>
         <option value="partner">partner</option>
       </select>

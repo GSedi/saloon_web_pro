@@ -15,6 +15,8 @@ import { SaloonComponent } from './components/saloon/saloon.component';
 import { SaloonsListComponent } from './components/saloons-list/saloons-list.component';
 import { ServiceDetailComponent } from './components/service-detail/service-detail.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SaloonDetailComponent } from './components/saloon-detail/saloon-detail.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { RegisterComponent } from './components/register/register.component';
     SaloonsListComponent,
     SaloonComponent,
     ServiceDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent,
+    SaloonDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<div *ngIf="isLogged()" class="container">
+  <div class="layout salon-page">
+    <div id="salonHeader">
+      <button type="button" class="btn btn-info" (click)="navigateBack()">Back</button>
+      <h2 class="salonTitle"><strong>{{saloon.name}}</strong></h2>
+      <div class="photo">
+        <img src="{{saloon.img_url}}" class="picture" alt="picture of salon" />
+      </div>
+    </div>
+    <div id="salonBody">
+      <div class="row">
+        <div class="salonAddress">
+          <h3>Address: </h3>
+          <p class="address">{{saloon.address}}</p>
+        </div>
+        <div class="salonSchedule">
+          <h3>Schedule: </h3>
+          <p class="schedule">
+            <span>
+              From: {{saloon.work_start}}
+              <br>
+              To: {{saloon.work_end}}
+            </span>
+          </p>
+        </div>
+        <div class="SalonCardNumber">
+          <h3>Card number:</h3>
+          <p class="cnumber">{{saloon.card_number}}</p>
+        </div>
+        <div class="SalonRating">
+          <h3>Rating:</h3>
+          <p class="salonRating">{{saloon.rating}}</p>
+        </div>
+        <div class="SalonService">
+          <select class="form-control mb-3 text-uppercase" [(ngModel)]="selectedRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button (click)="rate()" class="btn btn-primary text-center text-uppercase">rate</button>
+        </div>
+      </div>
+      <h4 class="text-center text-uppercase">services</h4>
+      <div routerLink="/services/{{service.id}}" *ngFor="let service of services" class="card mb-1">
+        <div class="card-body">
+          {{service.id}}. {{service.name}}: {{service.description}}
+        </div>
+      </div>
+    </div>
+    <div class="shadow" id="aboutSalon">
+      <h3>Description:</h3>
+      <div class="salon-description" style="height:75px; overflow:hidden;">
+        <p>{{saloon.description}}</p>
+        <br>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="card card-body">
+        <div class="input-group mb-3">
+          <input [(ngModel)]="commentText" placeholder="Comment" type="text" class="form-control">
+        </div>
+        <button (click)="createComment()" class="btn btn-success text-uppercase text-center">comment</button>
+      </div>
+    </div>
+    <div *ngFor="let comment of comments" class="card mb-1">
+      <div class="card-body">
+        {{comment.owner.username}}: {{comment.text}}
+      </div>
+    </div>
+  </div>
+</div>

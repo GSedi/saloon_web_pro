@@ -49,6 +49,10 @@ export class SaloonComponent implements OnInit {
     return this.cnt % 2 != 0
   }
 
+  isLogged() {
+    return !!localStorage.token
+  }
+
   update() {
     if (this.saloon.name != '' && this.saloon.address != '' && this.saloon.telephone != '' && this.saloon.card_number != '') {
       this.provider.updateSaloon(this.saloon)

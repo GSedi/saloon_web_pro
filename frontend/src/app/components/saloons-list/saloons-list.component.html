@@ -1,4 +1,4 @@
-<!-- <button (click)="test()">all saloons</button> -->
+<!-- <button (click)="test()">all saloons</button>
 <ng-container>
   <div class="main row justify-content-center align-items-middle">
     <div class="col-8">
@@ -9,6 +9,39 @@
       <div class="list-group">
         <a routerLink='' *ngFor="let saloon of saloons" class="list-group-item list-group-item-action"> {{saloon.id}}. {{saloon.name}} </a>
       </div>
+    </div>
+  </div>
+</ng-container> -->
+
+<ng-container>
+  <div *ngIf="isLogged()" class="container">
+    <div class="row" style="margin-left:20px;">
+      <button type="button" class="btn btn-info" (click)="navigateBack()">Back</button>
+    </div>
+    <h2>Salon List</h2>
+    <div class="salon-card" *ngFor="let salon of saloons">
+      <div class="info">
+        <div class="avatar">
+        </div>
+        <div class="details">
+          <div class="name">{{salon.name}}</div>
+          <div class="meta-info">
+            <span class="tel">{{salon.telephone}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ratings">
+          <span class="rating-count">{{salon.rating}} Rating</span>
+        </div>
+        <div class="comments">
+          <span class="comment-count"><strong>0</strong>Comments</span>
+        </div>
+        <div class="details">
+          <a routerLink="/saloons-detail/{{salon.id}}/" class="btn-details">Details</a> 
+        </div>
+      </div>
+      <div class="locations">{{salon.address}}</div>
     </div>
   </div>
 </ng-container>

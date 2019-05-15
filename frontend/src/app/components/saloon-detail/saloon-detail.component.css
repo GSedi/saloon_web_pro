@@ -1,0 +1,56 @@
+.btn-info{
+  margin-top:5px;
+}
+.salonTitle{
+  text-align:center;
+}
+h3{
+  margin-top:10px;
+}
+.address{
+  color: #006db8;
+  text-decoration: none;
+}
+.salonSchedule{
+  margin-left: 90px;
+}
+
+.SalonCardNumber{
+  margin-left: 90px;
+}
+.SalonRating{
+  margin-left: 90px;
+}
+.SalonService{
+  margin-left: 90px;
+}
+
+#aboutSalon{
+  padding: 1.3em;
+  margin-bottom: 40px;
+  background: #e5f1ff;
+  line-height: 24px;
+  border-radius: 5px;
+}
+
+.shadow{
+  box-shadow:0 38px 30px -48px #82AAC7;
+}
+
+.salonComment{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+}

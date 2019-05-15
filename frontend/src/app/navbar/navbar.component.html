@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <span class="navbar-brand">Project</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a *ngIf="isLogged() && !isPartner()" class="nav-link" routerLink="/saloons">Saloons</a>
+          <a *ngIf="isLogged() && isPartner()" class="nav-link" routerLink="/partner-saloons">My saloons</a>
+          <a *ngIf="!isLogged()" class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a *ngIf="!isLogged()" class="nav-link" routerLink="/register">Register</a>
+        </li>
+      </ul>
+      <div *ngIf="isLogged() && !isPartner()" class="mr-2 form-inline my-2 my-lg-0">
+        <input [(ngModel)]="searchName" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button (click)="filter()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+      <button *ngIf="isLogged()" (click)="logout()" class="btn btn-danger text-canter text-uppercase">logout</button>
+    </div>
+  </div>
+</nav>

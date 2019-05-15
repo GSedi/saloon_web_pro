@@ -27,6 +27,10 @@ export class ServiceDetailComponent implements OnInit {
     })
   }
 
+  isPartner() {
+    return !!localStorage.partner_id
+  }
+
   deleteService() {
     this.provider.deleteService(this.service.id).then(res => {
       this.location.back()
@@ -35,5 +39,9 @@ export class ServiceDetailComponent implements OnInit {
 
   updateService() {
     this.provider.updateService(this.service.id, this.service)
+  }
+
+  isLogged() {
+    return !!localStorage.token
   }
 }

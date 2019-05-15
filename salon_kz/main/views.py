@@ -470,37 +470,32 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     
 
 
-class SetClientRating(generics.CreateAPIView):
-    queryset = models.ClientRating.objects.all()
-    serializers_class = serializers.ClientRatingSerializer
+class SetClientRating(APIView):
     permission_classes = (IsAdminUser | IsPartner|IsMaster,)
 
-    def create(self, request, *args, **kwargs):
-        client = models.Client.objects.get(pk=self.kwargs[self.lookup_field])
+    def post(self, request, pk):
+        client = models.Client.objects.get(id=pk)
         rate = int(request.data.get('rate'))
         serializer = serializers.ClientRatingSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         rating = models.ClientRating(client=client, rate=rate, owner = request.user)
         rating.save()
         client.save()
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class SetMasterRating(generics.CreateAPIView):
-    queryset = models.MasterRating.objects.all()
-    serializers_class = serializers.MasterRatingSerializer
+
+class SetMasterRating(APIView):
     permission_classes = (IsAdminUser | IsClient,)
 
-    def create(self, request, *args, **kwargs):
-        master = models.Master.objects.get(pk=self.kwargs[self.lookup_field])
+    def post(self, request, pk):
+        master = models.Master.objects.get(id=pk)
         rate = int(request.data.get('rate'))
         serializer = serializers.MasterRatingSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         rating = models.MasterRating(master=master, rate=rate, owner = request.user)
         rating.save()
         master.save()
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class SetSalonRating(generics.CreateAPIView):
     queryset = models.SalonRating.objects.all()
